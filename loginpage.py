@@ -2,6 +2,7 @@ from tkinter import *
 import mysql.connector
 from tkinter import messagebox
 import tkinter as tk
+import os
 
 mydb = mysql.connector.connect(
     host = "127.0.0.1",
@@ -59,13 +60,15 @@ def failed():
 
 def back():
     window.destroy()
-
+def logout():
+    return os.system("shutdown -l")
 
 mybutton = Button(window,text="Login",command=verify, fg="blue",bg="black")
 mybutton.place(x=175,y=60)
 mybutton2 = Button(window,text="Go Back",command=back, fg="blue",bg="black")
 mybutton2.place(x=165,y=95)
-
+mybutton2 = Button(window,text="Logout",command=logout, fg="blue",bg="black")
+mybutton2.place(x=165,y=125)
 
 window.mainloop()
 # verify()

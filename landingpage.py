@@ -23,11 +23,12 @@ def landing():
     my_window = Tk()
     my_window.title("Lifechoices Management System: ")
     my_window.geometry("450x450")
+    my_window.configure(bg='black')
 
-    label_heading = tk.Label(my_window,text="Welcome to LifeChoices.")
+    label_heading = tk.Label(my_window,text="Welcome to LifeChoices.",bg="black",fg="green")
     label_heading.place(x=115,y=50)
 
-    label_heading = tk.Label(my_window,text="Please select your option:")
+    label_heading = tk.Label(my_window,text="Please select your option:",bg="black",fg="green")
     label_heading.place(x=115,y=70)
 
     mybutton = Button(my_window,text="Login",command=logging,width=15, fg="blue",bg="black")
