@@ -4,13 +4,20 @@ from tkinter import messagebox
 import tkinter as tk
 
 def register():
+
     import register
     register.register()
+
+def admin():
+
+        import admin
+        admin.admin()
 
 def logging():
     # messagebox.showinfo("GOOD","You've loged successfully")
     import loginpage
     loginpage.verify()
+
 def landing():
 
     my_window = Tk()
@@ -25,8 +32,13 @@ def landing():
 
     mybutton = Button(my_window,text="Login",command=logging,width=15, fg="blue",bg="black")
     mybutton.place(x=50,y=100)
-    mybutton = Button(my_window,text="Register",command=register,fg="blue",bg="black", width=15)
-    mybutton.place(x=200,y=100)
+    mybutton2 = Button(my_window,text="Register",command=register,fg="blue",bg="black", width=15)
+    mybutton2.place(x=200,y=100)
+    mybutton3 = Button(my_window,text="Admin",command=admin,fg="blue",bg="black", width=15)
+    mybutton3.place(x=130,y=130)
+    mybutton4 = Button(my_window,text="Exit",command=exit,fg="blue",bg="black", width=18)
+    mybutton4.place(x=120,y=170)
+
 
     my_window.mainloop()
 landing()

@@ -29,16 +29,18 @@ Entry2 =Entry(window)
 Entry2.place(x=136,y=29)
 user = Entry1.get()
 passs = Entry2.get()
-# def verify():
-#     sql = "select * from Login where user = %s and password = %s"
-#     mycursor.execute(sql,[(user),(passs)])
-#     results = mycursor.fetchall()
-#     if results:
-#         for i in results:
-#             logged()
-#             break
-#     else:
-#         failed()
+
+##I NEED TO GET THIS WORKING NOW
+def verify():
+    sql = "select * from Login where user = %s and password = %s"
+    mycursor.execute(sql,[(user),(passs)])
+    results = mycursor.fetchall()
+    if results:
+        for i in results:
+            logged()
+            break
+    else:
+        failed()
 
 def logged():
     if (user==" " and passs==" "):
@@ -53,11 +55,14 @@ def failed():
     messagebox.showerror("WARNING","You have entered invalid info. Please try again")
 
     window.destroy()
-
+def back():
+    window.destroy()
 
 
 mybutton = Button(window,text="Login",command=logged, fg="blue",bg="black")
 mybutton.place(x=175,y=60)
+mybutton2 = Button(window,text="Go Back",command=back, fg="blue",bg="black")
+mybutton2.place(x=165,y=95)
 
 
 window.mainloop()
