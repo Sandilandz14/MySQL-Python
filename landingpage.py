@@ -6,17 +6,17 @@ import tkinter as tk
 def register():
 
     import register
-    register.register()
+    register.myregister()
 
 def admin():
-
         import admin
-        admin.admin()
+        admin.new_admin()
 
 def logging():
     # messagebox.showinfo("GOOD","You've loged successfully")
     import loginpage
-    loginpage.verify()
+    # loginpage.verify()
+    pass
 
 def landing():
 

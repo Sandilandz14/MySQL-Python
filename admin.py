@@ -38,13 +38,13 @@ password.place(x=25, y=120)
 Entry5 = Entry(root)
 Entry5.place(x=135, y=120)
 
-def admin():
+def new_admin():
     pass
 
 def back():
     root.destroy()
 
-mybutton = Button(root, text="Login as Admin", command=admin, fg="blue", bg="black", width=15)
+mybutton = Button(root, text="Register New Admin", command=new_admin, fg="blue", bg="black", width=15)
 mybutton.place(x=145,y=160)
 mybutton = Button(root, text="Go Back", command=back, fg="blue", bg="black", width=15)
 mybutton.place(x=145,y=190)
