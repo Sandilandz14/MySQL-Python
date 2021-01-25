@@ -2,11 +2,7 @@ from tkinter import *
 import mysql.connector
 from tkinter import messagebox
 import tkinter as tk
-import sys
-import time
-import calendar
-import random
-import datetime as dt
+
 
 root = Tk()
 root.title("Lifechoices Management System: ")
@@ -43,6 +39,10 @@ password.place(x=25, y=40)
 Entry5 = Entry(root)
 Entry5.place(x=135, y=40)
 
+# def logging():
+#     import adminfunc
+#     adminfunc.
+#     pass
 
 def new_user():
     import adminfunc
@@ -52,9 +52,7 @@ def my_delete():
     import adminfunc
     adminfunc.remove()
 
-def showtime():
-    w = Label(root, text=f"{dt.datetime.now():%a, %b %d %Y}", fg="green", bg="black", font=("helvetica", 40))
-    messagebox.showinfo("Date and Time",w)
+
 
 #     import adminfunc
 #     adminfunc.update()
@@ -66,11 +64,11 @@ def showtime():
 def back():
     root.destroy()
 
-mybutton1 = Button(root, text="Add New User", command=new_user, fg="green", bg="black", width=20).place(x=120,y=80)
-mybutton2 = Button(root, text="Delete User", command=my_delete, fg="green", bg="black", width=20).place(x=120,y=110)
-mybutton3 = Button(root, text="Time Data", command=showtime, fg="green", bg="black", width=20).place(x=120,y=140)
-# mybutton4 = Button(root, text="Update", command=update, fg="green", bg="black", width=20)
-# mybutton4.place(x=110,y=250)
+mybutton1 = Button(root, text="Login", command=new_user, fg="green", bg="black", width=20).place(x=120,y=80)
+# mybutton2 = Button(root, text="Delete User", command=my_delete, fg="green", bg="black", width=20).place(x=120,y=110)
+# mybutton3 = Button(root, text="Time Data", command=showtime, fg="green", bg="black", width=20).place(x=120,y=140)
+mybutton4 = Button(root, text="Register", command=register, fg="green", bg="black", width=20)
+mybutton4.place(x=120,y=140)
 mybutton6 = Button(root, text="Go Back", command=back, fg="green", bg="black", width=15)
-mybutton6.place(x=139,y=310)
+mybutton6.place(x=139,y=110)
 root.mainloop()

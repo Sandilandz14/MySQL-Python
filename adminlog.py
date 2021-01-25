@@ -15,7 +15,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 window = Tk()
-window.title("Login")
+window.title("Admin Login")
 window.geometry("450x450")
 
 user = StringVar
@@ -31,12 +31,11 @@ password.place(x=25,y=29)
 Entry2 =Entry(window)
 Entry2.place(x=136,y=29)
 
-##I NEED TO GET THIS WORKING NOW
 def verify():
 
     user  = Entry1.get()
     password = Entry2.get()
-    sql = "select * from Login where Username = %s and Password = %s"
+    sql = "select * from Admin where Username = %s and Password = %s"
     mycursor.execute(sql,(user, password))
     results = mycursor.fetchall()
 
@@ -45,31 +44,30 @@ def verify():
     else:
         failed()
 
-# def logged():
-    # if (user==" " and passs==" "):
-    #     messagebox.showinfo("Error message","Please enter the required information")
-    #     # window=None
-    # else:
-    #     messagebox.showinfo("Successful","Login successful, Enjoy! Enjoy your day. Press ok to proceed")
-    # window.destroy()
-
-
 def failed():
     messagebox.showerror("WARNING","You have entered invalid info. Please try again")
     window.destroy()
 
 def back():
     window.destroy()
+
 def logout():
     return os.system("shutdown -l")
 
-mybutton = Button(window,text="Login",command=verify, fg="blue",bg="black")
-mybutton.place(x=175,y=60)
-mybutton2 = Button(window,text="Go Back",command=back, fg="blue",bg="black")
-mybutton2.place(x=165,y=95)
-mybutton2 = Button(window,text="Logout",command=logout, fg="blue",bg="black")
-mybutton2.place(x=165,y=125)
+def register():
+    import adminreg
+    adminreg.myregister()
+
+mybutton = Button(window,text="Login",command=verify, fg="green",bg="black", width=20)
+mybutton.place(x=135,y=60)
+mybutton = Button(window,text="Register",command=register, fg="green",bg="black", width=20)
+mybutton.place(x=135,y=95)
+mybutton2 = Button(window,text="Go Back",command=back, fg="green",bg="black",width=20)
+mybutton2.place(x=135,y=125)
+mybutton2 = Button(window,text="Logout",command=logout, fg="green",bg="black", width=20)
+mybutton2.place(x=135,y=155)
 
 window.mainloop()
+
 
 

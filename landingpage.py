@@ -9,8 +9,8 @@ def register():
     register.myregister()
 
 def admin():
-        import admin
-        admin.new_user()
+        import adminlog
+        adminlog.verify()
 
 def logging():
     # messagebox.showinfo("GOOD","You've loged successfully")
