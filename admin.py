@@ -2,73 +2,103 @@ from tkinter import *
 import mysql.connector
 from tkinter import messagebox
 import tkinter as tk
+import os
 
+mydb = mysql.connector.connect(
+    host = "127.0.0.1",
+    password = "@Lifechoices1234",
+    user = "lifechoices",
+    database = "students",
+    auth_plugin = "mysql_native_password",
+)
 
-root = Tk()
-root.title("Lifechoices Management System: ")
-root.geometry("400x400")
-#
-# #Creating Entries for name
-# name = tk.Label(root,text="Enter Name: ")
-# name.place(x=25, y=1)
-# Entry1 = Entry(root)
-# Entry1.place(x=135, y=1)
-#
-# #Creating Entries for surname
-# surname = tk.Label(root,text="Enter Surname: ")
-# surname.place(x=25, y=29)
-# Entry2 = Entry(root)
-# Entry2.place(x=135, y=29)
-#
-#
-# #Creating Entries for cell
-# mobile = tk.Label(root,text="Enter Cell: ")
-# mobile.place(x=25, y=60)
-# Entry3 = Entry(root)
-# Entry3.place(x=135, y=60)
+mycursor = mydb.cursor()
 
-#Creating Entries for username
-username = tk.Label(root,text="Enter Username: ")
-username.place(x=25, y=10)
-Entry4 =Entry(root)
-Entry4.place(x=136, y=10)
+window = Tk()
+window.title("Admin Login")
+window.geometry("450x450")
 
-#Creating Entries for password
-password = tk.Label(root, text="Enter Password: ")
-password.place(x=25, y=40)
-Entry5 = Entry(root)
-Entry5.place(x=135, y=40)
+user = StringVar
+passs = StringVar
+#Creating Entries for username and password
+label_user = tk.Label(window,text="Enter Fullname:")
+label_user.place(x=25,y=1)
+Entry1 = Entry(window).place(x=135,y=1)
 
-# def logging():
-#     import adminfunc
-#     adminfunc.
-#     pass
+label_user = tk.Label(window,text="Enter Username:")
+label_user.place(x=25,y=30)
+Entry2 = Entry(window).place(x=135,y=30)
 
-def new_user():
-    import adminfunc
-    adminfunc.my_new_user()
+password = tk.Label(window,text="Enter Password:")
+password.place(x=25,y=29)
+Entry3 =Entry(window).place(x=136,y=60)
 
-def my_delete():
-    import adminfunc
-    adminfunc.remove()
+def main_admin():
 
+    user  = Entry1.get()
+    password = Entry2.get()
+    sql = "select * from Admin where Username = %s and Password = %s"
+    mycursor.execute(sql,(user, password))
+    results = mycursor.fetchall()
 
+    if results:
+        messagebox.showinfo("Successful","Login successful, Enjoy! Enjoy your day. Press ok to proceed")
+    else:
+        failed()
 
-#     import adminfunc
-#     adminfunc.update()
-#
-# def insert():
-#     import adminfunc
-#     adminfunc.my_insert()
+def failed():
+    messagebox.showerror("WARNING","You have entered invalid info. Please try again")
+    window.destroy()
+def register():
+    import adminreg
+    adminreg.myregister()
+
+def remove():
+    a = Entry1.get()
+    mydb = mysql.connector.connect(
+    host = "127.0.0.1",
+    password = "@Lifechoices1234",
+    user = "lifechoices",
+    database = "students")
+
+    mycursor = mydb.cursor()
+    delete = "delete from Login where Username = '%s'" %(a)
+    mycursor.execute(delete)
+    mydb.commit()
+    print(mycursor.rowcount,"record(s) deleted")
+
+def update():
+
+    b = Entry1.get()
+    c = Entry2.get()
+    d = Entry3.get()
+
+    mydb = mysql.connector.connect(
+    host = "127.0.0.1",
+    password = "@Lifechoices1234",
+    user = "lifechoices",
+    database = "students")
+
+    mycursor = mydb.cursor()
+    my_update = "UPDATE Login SET Fullname = '%s', Username = '%s' WHERE Password = '%s'" %(b,c,d)
+    mycursor.execute(my_update)
+    mydb.commit()
+
 
 def back():
-    root.destroy()
+    window.destroy()
 
-mybutton1 = Button(root, text="Login", command=new_user, fg="green", bg="black", width=20).place(x=120,y=80)
-# mybutton2 = Button(root, text="Delete User", command=my_delete, fg="green", bg="black", width=20).place(x=120,y=110)
-# mybutton3 = Button(root, text="Time Data", command=showtime, fg="green", bg="black", width=20).place(x=120,y=140)
-mybutton4 = Button(root, text="Register", command=register, fg="green", bg="black", width=20)
-mybutton4.place(x=120,y=140)
-mybutton6 = Button(root, text="Go Back", command=back, fg="green", bg="black", width=15)
-mybutton6.place(x=139,y=110)
-root.mainloop()
+def logout():
+    return os.system("shutdown -l")
+
+
+
+# mybutton1 = Button(window,text="Login", fg="green",bg="black", width=20).place(x=135,y=65)
+mybutton2 = Button(window,text="Register",command=register, fg="green",bg="black", width=20).place(x=135,y=95)
+mybutton3 = Button(window,text="Delete",command=remove, fg="green",bg="black",width=20).place(x=135,y=125)
+mybutton5 = Button(window,text="Update",command=update, fg="green",bg="black",width=20).place(x=135,y=155)
+mybutton6 = Button(window,text="Go Back",command=back, fg="green",bg="black",width=20).place(x=135,y=185)
+mybutton7 = Button(window,text="Logout",command=logout, fg="green",bg="black", width=20).place(x=135,y=215)
+
+window.mainloop()
+

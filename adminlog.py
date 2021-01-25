@@ -41,12 +41,23 @@ def verify():
 
     if results:
         messagebox.showinfo("Successful","Login successful, Enjoy! Enjoy your day. Press ok to proceed")
+        import admin
+        admin.main_admin()
     else:
         failed()
 
 def failed():
     messagebox.showerror("WARNING","You have entered invalid info. Please try again")
     window.destroy()
+def register():
+    import adminreg
+    adminreg.myregister()
+
+def remove():
+    pass
+
+def update():
+    pass
 
 def back():
     window.destroy()
@@ -54,18 +65,16 @@ def back():
 def logout():
     return os.system("shutdown -l")
 
-def register():
-    import adminreg
-    adminreg.myregister()
 
-mybutton = Button(window,text="Login",command=verify, fg="green",bg="black", width=20)
-mybutton.place(x=135,y=60)
-mybutton = Button(window,text="Register",command=register, fg="green",bg="black", width=20)
-mybutton.place(x=135,y=95)
-mybutton2 = Button(window,text="Go Back",command=back, fg="green",bg="black",width=20)
-mybutton2.place(x=135,y=125)
-mybutton2 = Button(window,text="Logout",command=logout, fg="green",bg="black", width=20)
-mybutton2.place(x=135,y=155)
+
+mybutton1 = Button(window,text="Login",command=verify, fg="green",bg="black", width=20).place(x=135,y=65)
+mybutton2 = Button(window,text="Register",command=register, fg="green",bg="black", width=20).place(x=135,y=95)
+mybutton3 = Button(window,text="Delete",command=remove, fg="green",bg="black",width=20).place(x=135,y=125)
+mybutton5 = Button(window,text="Update",command=update, fg="green",bg="black",width=20).place(x=135,y=155)
+
+
+mybutton6 = Button(window,text="Go Back",command=back, fg="green",bg="black",width=20).place(x=135,y=185)
+mybutton7 = Button(window,text="Logout",command=logout, fg="green",bg="black", width=20).place(x=135,y=215)
 
 window.mainloop()
 

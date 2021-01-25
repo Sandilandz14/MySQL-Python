@@ -55,11 +55,7 @@ def my_new_user():
 
 
 
-def remove():
-    pass
 
-def update():
-    pass
 
 def back():
     root.destroy()
