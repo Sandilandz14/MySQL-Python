@@ -10,7 +10,7 @@ def register():
 
 def admin():
         import admin
-        admin.new_admin()
+        admin.new_user()
 
 def logging():
     # messagebox.showinfo("GOOD","You've loged successfully")
@@ -36,7 +36,7 @@ def landing():
     mybutton2 = Button(my_window,text="Register",command=register,fg="blue",bg="black", width=15)
     mybutton2.place(x=200,y=100)
     mybutton3 = Button(my_window,text="Admin",command=admin,fg="blue",bg="black", width=15)
-    mybutton3.place(x=130,y=130)
+    mybutton3.place(x=130,y=135)
     mybutton4 = Button(my_window,text="Exit",command=exit,fg="blue",bg="black", width=18)
     mybutton4.place(x=120,y=170)
 
